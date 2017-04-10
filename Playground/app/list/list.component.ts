@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core'; 
+import { Component, Input, OnInit, DoCheck } from '@angular/core'; 
 import { ListService } from './list.service'; 
+import { MovieService } from './movie.service'; 
 
 @Component({
   selector: 'pg-list', 
@@ -13,10 +14,17 @@ export class ListComponent {
   titleColor: string = 'darkblue'; 
   showList: boolean = true; 
   angularTerms: string[]; 
+  movie: any; 
 
-  constructor(private _listService: ListService) {} 
+  constructor(
+    private _movieService: MovieService,
+    private _listService: ListService 
+    ) {} 
   
   ngOnInit(): void {
+    this._movieService.getMovie()
+      .subscribe(movie => this.movie = movie)
+      .then()
     this.angularTerms = this._listService.getTerms();
   }
 

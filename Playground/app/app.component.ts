@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ListService } from "./list/list.service";
+import { MovieService } from "./list/movie.service";
 
 @Component({
     selector: 'pm-app',
@@ -9,7 +10,10 @@ import { ListService } from "./list/list.service";
       <pg-list [listTitle] = 'listComponentTitle'></pg-list>
     </body>
     `, 
-    providers: [ListService]
+    providers: [
+      ListService, 
+      MovieService
+      ]
 })
 export class AppComponent {
   pageTitle: string = 'App Component'; 
