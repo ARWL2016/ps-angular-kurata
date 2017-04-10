@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ListService } from "./list/list.service";
 
 @Component({
     selector: 'pm-app',
@@ -7,7 +8,8 @@ import { Component } from '@angular/core';
       <h1>{{pageTitle}}</h1>
       <pg-list [listTitle] = 'listComponentTitle'></pg-list>
     </body>
-    `
+    `, 
+    providers: [ListService]
 })
 export class AppComponent {
   pageTitle: string = 'App Component'; 

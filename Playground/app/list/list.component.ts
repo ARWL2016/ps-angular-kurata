@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core'; 
+import { Component, Input, OnInit } from '@angular/core'; 
+import { ListService } from './list.service'; 
 
 @Component({
   selector: 'pg-list', 
@@ -11,13 +12,14 @@ export class ListComponent {
   pageTitle: string;  
   titleColor: string = 'darkblue'; 
   showList: boolean = true; 
-  angularTerms: string[] = [
-    'directive', 
-    'pipe', 
-    'interface', 
-    'component', 
-    'decorator'
-  ]; 
+  angularTerms: string[]; 
+
+  constructor(private _listService: ListService) {} 
+  
+  ngOnInit(): void {
+    this.angularTerms = this._listService.getTerms();
+  }
+
   toggleList(): void {
     this.showList = this.showList ? false : true; 
   }
