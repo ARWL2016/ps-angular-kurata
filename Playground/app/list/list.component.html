@@ -1,5 +1,5 @@
-<h2 [style.color]='titleColor'>{{pageTitle}}</h2>
+<h3 [style.color]='titleColor'>{{listTitle}}</h3>
 <button (click) = 'toggleList()'>{{showList ? 'Hide' : 'Show'}} List</button>
 <ol *ngIf='showList'>
-  <li *ngFor='let term of angularTerms'>{{term}}</li>
+  <li *ngFor='let term of angularTerms'>{{ term | uppercase | lowercase }}</li>
 </ol>

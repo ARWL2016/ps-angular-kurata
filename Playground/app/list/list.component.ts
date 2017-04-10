@@ -1,12 +1,14 @@
-import { Component } from '@angular/core'; 
+import { Component, Input } from '@angular/core'; 
 
 @Component({
   selector: 'pg-list', 
-  templateUrl: 'app/list/list.component.html'
+  templateUrl: 'app/list/list.component.html', 
+  styleUrls: ['app/list/list.component.css']
 })
 
 export class ListComponent {
-  pageTitle: string = 'List Component';  
+  @Input() listTitle: string; 
+  pageTitle: string;  
   titleColor: string = 'darkblue'; 
   showList: boolean = true; 
   angularTerms: string[] = [
