@@ -13,7 +13,6 @@ export class MovieService {
 
   getMovie(): Observable<any> {
     return this._http.get(this._movieUrl)
-      .do((response) => console.log(response, typeof response))
       .map((response: Response) => <any[]> response.json())
       .do((response) => console.log(response, typeof response)); 
   }
