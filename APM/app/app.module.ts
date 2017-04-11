@@ -10,6 +10,7 @@ import { ProductFilterPipe } from './products/product-filter.pipe';
 import { StarComponent } from './shared/star.component';
 import { ProductDetailComponent } from "./products/product-detail.component";
 import { WelcomeComponent } from "./home/welcome.component";
+import { ProductDetailGuard } from "./products/product-guard.service";
 
 @NgModule({
   // Angular + 3rd Party: 
@@ -19,7 +20,9 @@ import { WelcomeComponent } from "./home/welcome.component";
     HttpModule, 
     RouterModule.forRoot([
       { path: 'products', component: ProductListComponent }, 
-      { path: 'product/:id', component: ProductDetailComponent }, 
+      { path: 'product/:id',
+        canActivate: [ProductDetailGuard], 
+        component: ProductDetailComponent }, 
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' } 
@@ -33,6 +36,7 @@ import { WelcomeComponent } from "./home/welcome.component";
     ProductDetailComponent,
     StarComponent, 
     ProductFilterPipe ],
+    providers: [ProductDetailGuard],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
