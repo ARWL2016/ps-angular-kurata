@@ -23,7 +23,8 @@ export class ListComponent {
   
   ngOnInit(): void {
     this._movieService.getMovie()
-      .subscribe(movie => this.movie = movie);
+      .subscribe(movie => this.movie = movie, 
+      error => console.log(error)); 
       // what data type is movie ???? 
     this.angularTerms = this._listService.getTerms();
   }

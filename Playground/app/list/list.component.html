@@ -3,4 +3,11 @@
 <ol *ngIf='showList'>
   <li *ngFor='let term of angularTerms'>{{ term | uppercase | lowercase }}</li>
 </ol>
-<h3>My Movie Data</h3>
+<div *ngIf='movie'>
+  <h3>{{movie.Title}}</h3>
+  <ul>
+    <li>{{movie.Year}}</li>
+    <li>{{movie.Director}}</li>
+  </ul>
+  <img [src]='movie.Poster'>
+</div>
